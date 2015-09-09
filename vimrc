@@ -23,6 +23,7 @@ set showmatch    " 매칭되는 괄호를 보여줌
 set nowrap         " 자동 줄바꿈 하지 않음
 set wmnu           " tab 자동완성시 가능한 목록을 보여줌
 set visualbell		"키를 잘못 누르면 화면을 번쩍이게 함.
+set shell=/bin/bash
 
 syntax on        " 문법 하이라이트 킴"
 
