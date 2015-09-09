@@ -3,7 +3,7 @@
 
 ## Tip for Basic Setting
 After cloning this project, make softlinks to the proper location.
-For example,
+For example, if `vim_config` is in your home directory,
 
     $ ln -s ~/vim_config ~/.vim
     $ ln -s ~/vim_config/vimrc ~/.vimrc
