@@ -41,6 +41,7 @@ set tags=./tags,tags;$HOME
 
 "NERD Commenter 관련 설정"
 filetype plugin on
+let NERD_c_alt_style=1
 
 "pyflakes settings
 filetype on
