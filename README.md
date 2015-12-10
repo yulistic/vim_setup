@@ -1,6 +1,19 @@
 # Vim Configuration Files
 > Author: Jongyul Kim (yulistic@gmail.com)
 
+## Cloning
+To clone the project including all the submodules, do
+```
+git clone --recursive https://github.com/yulistic/vim_config.git
+```
+If you have already cloned to your local without submodules, do
+```
+git clone https://github.com/yulistic/vim_config.git
+cd bar
+git submodule update --init --recursive
+```
+
+
 ## Tip for Basic Setting
 After cloning this project, make softlinks to the proper location.
 For example, if `vim_config` is in your home directory,
