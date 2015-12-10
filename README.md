@@ -4,13 +4,13 @@
 ## Cloning
 To clone the project including all the submodules, do
 ```
-git clone --recursive https://github.com/yulistic/vim_config.git
+$ git clone --recursive https://github.com/yulistic/vim_config.git
 ```
 If you have already cloned to your local without submodules, do
 ```
-git clone https://github.com/yulistic/vim_config.git
-cd bar
-git submodule update --init --recursive
+$ git clone https://github.com/yulistic/vim_config.git
+$ cd bar
+$ git submodule update --init --recursive
 ```
 
 
