@@ -9,7 +9,7 @@ $ git clone --recursive https://github.com/yulistic/vim_config.git
 If you have already cloned to your local without submodules, do
 ```
 $ git clone https://github.com/yulistic/vim_config.git
-$ cd bar
+$ cd vim_config
 $ git submodule update --init --recursive
 ```
 
