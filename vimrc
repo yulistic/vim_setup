@@ -24,6 +24,10 @@ set nowrap         " 자동 줄바꿈 하지 않음
 set wmnu           " tab 자동완성시 가능한 목록을 보여줌
 set visualbell		"키를 잘못 누르면 화면을 번쩍이게 함.
 set shell=/bin/bash
+set wrap
+
+" Key re-mapping
+inoremap <c-[> <ESC>
 
 syntax on        " 문법 하이라이트 킴"
 
@@ -127,3 +131,10 @@ let g:SrcExpl_nextDefKey = "<F4>"
     "cs add /usr/src/linux/cscope.out  
 "endif                                  
 "set csverb
+
+" Powerline
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+set laststatus=2
+set t_Co=256
