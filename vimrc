@@ -25,6 +25,7 @@ set wmnu           " tab 자동완성시 가능한 목록을 보여줌
 set visualbell		"키를 잘못 누르면 화면을 번쩍이게 함.
 set shell=/bin/bash
 set wrap
+set autochdir	"자동으로 열린파일의 디렉토리로 이동함.
 
 " Key re-mapping
 inoremap <c-[> <ESC>
@@ -43,6 +44,19 @@ syntax on        " 문법 하이라이트 킴"
 " Ctags
 set tags=./tags,tags;$HOME
 "set tags=./tags,tags;
+
+" Cscope 프로젝트 root directory에 있는 cscope.out을 자동으로 불러오기위한
+" script.
+function! LoadCscope()
+	let db = findfile("cscope.out", ".;")
+	if (!empty(db))
+		let path = strpart(db, 0, match(db, "/cscope.out$"))
+		set nocscopeverbose " suppress 'duplicate connection' error
+		exe "cs add " . db . " " . path
+		set cscopeverbose
+	endif
+endfunction
+au BufEnter /* call LoadCscope()
 
 "NERD Commenter 관련 설정"
 filetype plugin on
