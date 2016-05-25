@@ -42,6 +42,7 @@ syntax on        " 문법 하이라이트 킴"
 
 " Ctags
 set tags=./tags,tags;$HOME
+"set tags=./tags,tags;
 
 "NERD Commenter 관련 설정"
 filetype plugin on
@@ -83,8 +84,8 @@ let g:SrcExpl_gobackKey = "<SPACE>"
 " // except itself are using buffers. And you need add their buffer names into " 
 " // below listaccording to the command ":buffers!"                            " 
 let g:SrcExpl_pluginList = [ 
-     \ "__Tag_List__", 
-     \ "_NERD_tree_" 
+     \ "__Tagbar__", 
+     \ "NERD_tree_1" 
      \ ] 
                                                                               " 
 " // Enable/Disable the local definition searching, and note that this is not  " 
@@ -133,8 +134,8 @@ let g:SrcExpl_nextDefKey = "<F4>"
 "set csverb
 
 " Powerline
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
-set laststatus=2
-set t_Co=256
+"python from powerline.vim import setup as powerline_setup
+"python powerline_setup()
+"python del powerline_setup
+"set laststatus=2
+"set t_Co=256
