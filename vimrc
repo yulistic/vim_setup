@@ -62,9 +62,19 @@ au BufEnter /* call LoadCscope()
 filetype plugin on
 let NERD_c_alt_style=1
 
-"pyflakes settings
+
 filetype on
-"filetype plugin on		" Duplicated.
+
+"""""" Syntastic setting BEGIN """"""
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+"""""" Syntastic setting END """"""
 
 
 "TagList 관련 설정
