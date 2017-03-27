@@ -26,6 +26,10 @@ set visualbell		"키를 잘못 누르면 화면을 번쩍이게 함.
 set shell=/bin/bash
 set wrap
 set autochdir	"자동으로 열린파일의 디렉토리로 이동함.
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 
 " Key re-mapping
 inoremap <c-[> <ESC>
