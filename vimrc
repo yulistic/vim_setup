@@ -10,8 +10,10 @@ set number            " display line number
 set ai                    " auto indent
 set si                    " smart indent
 set cindent            " c style indent
+set tabstop=8         " tab을 4칸으로
 set shiftwidth=4      " shift를 4칸으로 ( >, >>, <, << 등의 명령어)
-set tabstop=4         " tab을 4칸으로
+set softtabstop=4
+set noexpandtab
 set hlsearch         " 검색시 하이라이트(색상 강조)
 set background=dark  " 검정배경을 사용할 때, (이 색상에 맞춰 문법 하이라이트 색상이 달라집니다.)
 set fileencodings=utf-8,euc-kr    " 파일인코딩 형식 지정
@@ -74,6 +76,8 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -113,7 +117,8 @@ let g:SrcExpl_gobackKey = "<SPACE>"
 " // below listaccording to the command ":buffers!"                            " 
 let g:SrcExpl_pluginList = [ 
      \ "__Tagbar__", 
-     \ "NERD_tree_1" 
+     \ "NERD_tree_1",
+	 \ "[Location List]"
      \ ] 
                                                                               " 
 " // Enable/Disable the local definition searching, and note that this is not  " 
