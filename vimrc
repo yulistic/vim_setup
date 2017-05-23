@@ -10,8 +10,10 @@ set number            " display line number
 set ai                    " auto indent
 set si                    " smart indent
 set cindent            " c style indent
+set tabstop=8         " tab을 4칸으로
 set shiftwidth=4      " shift를 4칸으로 ( >, >>, <, << 등의 명령어)
-set tabstop=4         " tab을 4칸으로
+set softtabstop=4
+set noexpandtab
 set hlsearch         " 검색시 하이라이트(색상 강조)
 set background=dark  " 검정배경을 사용할 때, (이 색상에 맞춰 문법 하이라이트 색상이 달라집니다.)
 set fileencodings=utf-8,euc-kr    " 파일인코딩 형식 지정
@@ -26,6 +28,10 @@ set visualbell		"키를 잘못 누르면 화면을 번쩍이게 함.
 set shell=/bin/bash
 set wrap
 set autochdir	"자동으로 열린파일의 디렉토리로 이동함.
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 
 " Key re-mapping
 inoremap <c-[> <ESC>
@@ -70,6 +76,8 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -113,7 +121,8 @@ let g:SrcExpl_gobackKey = "<SPACE>"
 " // below listaccording to the command ":buffers!"                            " 
 let g:SrcExpl_pluginList = [ 
      \ "__Tagbar__", 
-     \ "NERD_tree_1" 
+     \ "NERD_tree_1",
+	 \ "[Location List]"
      \ ] 
                                                                               " 
 " // Enable/Disable the local definition searching, and note that this is not  " 
@@ -167,3 +176,11 @@ let g:SrcExpl_nextDefKey = "<F4>"
 "python del powerline_setup
 "set laststatus=2
 "set t_Co=256
+
+"set rtp+=/home/yulistic/.local/lib/python2.7/site-packages/powerline/bindings/vim
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+set laststatus=2
+set t_Co=256
+
