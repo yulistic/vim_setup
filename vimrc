@@ -68,8 +68,10 @@ au BufEnter /* call LoadCscope()
 
 "NERD Commenter 관련 설정"
 filetype plugin on
-let NERD_c_alt_style=1
-
+let NERD_c_alt_style = 1 
+let g:NERDSpaceDelims = 1 
+let g:NERDCompactSecyComs = 1 
+let mapleader = ","
 
 filetype on
 
