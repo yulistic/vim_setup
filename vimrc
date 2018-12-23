@@ -58,6 +58,8 @@ syntax on        " 문법 하이라이트 킴"
 "set tags=./tags,tags;$HOME
 set tags=./tags,tags;
 
+" Cscope
+set cscoperelative
 " Cscope 프로젝트 root directory에 있는 cscope.out을 자동으로 불러오기위한
 " script.
 function! LoadCscope()
