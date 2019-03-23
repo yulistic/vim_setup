@@ -13,7 +13,8 @@ set cindent            " c style indent
 set tabstop=8         " tab을 4칸으로
 set shiftwidth=4      " shift를 4칸으로 ( >, >>, <, << 등의 명령어)
 set softtabstop=4
-set noexpandtab
+set expandtab
+" set noexpandtab
 set hlsearch         " 검색시 하이라이트(색상 강조)
 set background=dark  " 검정배경을 사용할 때, (이 색상에 맞춰 문법 하이라이트 색상이 달라집니다.)
 set fileencodings=utf-8,euc-kr    " 파일인코딩 형식 지정
