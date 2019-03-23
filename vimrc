@@ -33,6 +33,10 @@ set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 set foldlevel=2
+" set foldmethod=manual
+" au BufWinLeave * mkview             " Save fold state when file closed.
+" au BufWinEnter * silent loadview    " Load fold state when file opened.
+
 set laststatus=2    "statusline 항시 출력
 set statusline+=%F  "file의 full path를 statusline에 출력
 
@@ -74,9 +78,10 @@ function! LoadCscope()
 endfunction
 au BufEnter /* call LoadCscope()
 
-"NERD Commenter 관련 설정"
+"NERD Commenter "
 filetype plugin on
 let NERD_c_alt_style = 1 
+let g:NERDAltDelims_c = 1
 let g:NERDSpaceDelims = 1 
 let g:NERDCompactSecyComs = 1 
 let mapleader = ","
