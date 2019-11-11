@@ -68,13 +68,13 @@ set cscoperelative
 " Cscope 프로젝트 root directory에 있는 cscope.out을 자동으로 불러오기위한
 " script.
 function! LoadCscope()
-	let db = findfile("cscope.out", ".;")
-	if (!empty(db))
-		let path = strpart(db, 0, match(db, "/cscope.out$"))
-		set nocscopeverbose " suppress 'duplicate connection' error
-		exe "cs add " . db . " " . path
-		set cscopeverbose
-	endif
+        let db = findfile("cscope.out", ".;")
+        if (!empty(db))
+                let path = strpart(db, 0, match(db, "/cscope.out$"))
+                set nocscopeverbose " suppress 'duplicate connection' error
+                exe "cs add " . db . " " . path
+                set cscopeverbose
+        endif
 endfunction
 au BufEnter /* call LoadCscope()
 
@@ -347,3 +347,9 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+" vim-gutentags configuration.
+set statusline+=%{gutentags#statusline()}
+
+" cscope_dynamic configuration.
+nmap <F12> <Plug>CscopeDBInit
