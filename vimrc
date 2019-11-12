@@ -68,22 +68,22 @@ set cscoperelative
 " Cscope 프로젝트 root directory에 있는 cscope.out을 자동으로 불러오기위한
 " script.
 function! LoadCscope()
-	let db = findfile("cscope.out", ".;")
-	if (!empty(db))
-		let path = strpart(db, 0, match(db, "/cscope.out$"))
-		set nocscopeverbose " suppress 'duplicate connection' error
-		exe "cs add " . db . " " . path
-		set cscopeverbose
-	endif
+        let db = findfile("cscope.out", ".;")
+        if (!empty(db))
+                let path = strpart(db, 0, match(db, "/cscope.out$"))
+                set nocscopeverbose " suppress 'duplicate connection' error
+                exe "cs add " . db . " " . path
+                set cscopeverbose
+        endif
 endfunction
 au BufEnter /* call LoadCscope()
 
 "NERD Commenter "
 filetype plugin on
-let NERD_c_alt_style = 1 
+let NERD_c_alt_style = 1
 let g:NERDAltDelims_c = 1
-let g:NERDSpaceDelims = 1 
-let g:NERDCompactSecyComs = 1 
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSecyComs = 1
 let mapleader = ","
 
 filetype on
@@ -118,50 +118,50 @@ let NERDTreeWinPos="left"
 nmap <F9> :NERDTreeToggle<CR>
 
 "SrcExpl 관련 설정
-" // The switch of the Source Explorer                                         " 
-nmap <F8> :SrcExplToggle<CR> 
-"                                                                              " 
-" // Set the height of Source Explorer window                                  " 
-let g:SrcExpl_winHeight = 8 
-"                                                                              " 
-" // Set 100 ms for refreshing the Source Explorer                             " 
-let g:SrcExpl_refreshTime = 100 
-"                                                                              " 
-" // Set "Enter" key to jump into the exact definition context                 " 
-let g:SrcExpl_jumpKey = "<ENTER>" 
-"                                                                              " 
-" // Set "Space" key for back from the definition context                      " 
-let g:SrcExpl_gobackKey = "<SPACE>" 
-"                                                                              " 
-" // In order to avoid conflicts, the Source Explorer should know what plugins " 
-" // except itself are using buffers. And you need add their buffer names into " 
-" // below listaccording to the command ":buffers!"                            " 
-let g:SrcExpl_pluginList = [ 
-     \ "__Tagbar__", 
+" // The switch of the Source Explorer
+nmap <F8> :SrcExplToggle<CR>
+
+" // Set the height of Source Explorer window
+let g:SrcExpl_winHeight = 8
+
+" // Set 100 ms for refreshing the Source Explorer
+let g:SrcExpl_refreshTime = 100
+
+" // Set "Enter" key to jump into the exact definition context
+let g:SrcExpl_jumpKey = "<ENTER>"
+
+" // Set "Space" key for back from the definition context
+let g:SrcExpl_gobackKey = "<SPACE>"
+
+" // In order to avoid conflicts, the Source Explorer should know what plugins
+" // except itself are using buffers. And you need add their buffer names into
+" // below listaccording to the command ":buffers!"
+let g:SrcExpl_pluginList = [
+     \ "__Tagbar__",
      \ "NERD_tree_1",
 	 \ "[Location List]"
-     \ ] 
-                                                                              " 
-" // Enable/Disable the local definition searching, and note that this is not  " 
-" // guaranteed to work, the Source Explorer doesn't check the syntax for now. " 
-" // It only searches for a match with the keyword according to command 'gd'   " 
-let g:SrcExpl_searchLocalDef = 1 
-"                                                                              " 
-" // Do not let the Source Explorer update the tags file when opening          " 
-let g:SrcExpl_isUpdateTags = 0 
-"                                                                              " 
-" // Use 'Exuberant Ctags' with '--sort=foldcase -R .' or '-L cscope.files' to " 
-" //  create/update a tags file                                                " 
-let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ." 
-"                                                                              " 
-" // Set "<F12>" key for updating the tags file artificially                   " 
-let g:SrcExpl_updateTagsKey = "<F12>" 
-"                                                                              " 
-" // Set "<F3>" key for displaying the previous definition in the jump list    " 
-let g:SrcExpl_prevDefKey = "<F3>" 
-"                                                                              " 
-" // Set "<F4>" key for displaying the next definition in the jump list        " 
-let g:SrcExpl_nextDefKey = "<F4>" 
+     \ ]
+
+" // Enable/Disable the local definition searching, and note that this is not
+" // guaranteed to work, the Source Explorer doesn't check the syntax for now.
+" // It only searches for a match with the keyword according to command 'gd'
+let g:SrcExpl_searchLocalDef = 1
+
+" // Do not let the Source Explorer update the tags file when opening
+let g:SrcExpl_isUpdateTags = 0
+
+" // Use 'Exuberant Ctags' with '--sort=foldcase -R .' or '-L cscope.files' to
+" //  create/update a tags file
+let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ."
+
+" // Set "<F12>" key for updating the tags file artificially
+let g:SrcExpl_updateTagsKey = "<F12>"
+
+" // Set "<F3>" key for displaying the previous definition in the jump list
+let g:SrcExpl_prevDefKey = "<F3>"
+
+" // Set "<F4>" key for displaying the next definition in the jump list
+let g:SrcExpl_nextDefKey = "<F4>"
 
 " armasm 플러그인 관련
 "let asmsyntax='armasm'
@@ -176,15 +176,15 @@ let g:SrcExpl_nextDefKey = "<F4>"
 ""python del powerline_setup
 
 " Cscope related.
-"set csprg=/usr/bin/cscope 
-"set csto=0 
-"set cst 
-"set nocsverb 
-"if filereadable("./cscope.out")       
-    "cs add cscope.out                 
-"else                                  
-    "cs add /usr/src/linux/cscope.out  
-"endif                                  
+"set csprg=/usr/bin/cscope
+"set csto=0
+"set cst
+"set nocsverb
+"if filereadable("./cscope.out")
+    "cs add cscope.out
+"else
+    "cs add /usr/src/linux/cscope.out
+"endif
 "set csverb
 
 " Powerline
@@ -298,7 +298,7 @@ endif
 " For fast huge file open.
 " file is large from 10mb
 let g:LargeFile = 1024 * 1024 * 256
-augroup LargeFile 
+augroup LargeFile
  autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
 augroup END
 
@@ -355,3 +355,9 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" vim-gutentags configuration.
+set statusline+=%{gutentags#statusline()}
+
+" cscope_dynamic configuration.
+nmap <F12> <Plug>CscopeDBInit
