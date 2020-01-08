@@ -353,3 +353,15 @@ set statusline+=%{gutentags#statusline()}
 
 " cscope_dynamic configuration.
 nmap <F12> <Plug>CscopeDBInit
+
+" Ggrep
+:command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
+map <Leader>g :Ggr <cword><CR>
+nmap <Leader>g :Ggr <cword><CR>
+"" Map quickfix list navigation.
+" map <C-n> :cn<CR>
+" map <C-p> :cp<CR>
+map ]q :cn<CR>
+map [q :cp<CR>
+map ]Q :clast<CR>
+map [Q :cfirst<CR>
