@@ -47,6 +47,8 @@ nnoremap <F10> :b <C-Z>
 
 " Key re-mapping
 inoremap <c-[> <ESC>
+let mapleader = ","
+let maplocalleader = "\\"
 
 syntax on        " 문법 하이라이트 킴"
 
@@ -84,7 +86,6 @@ let NERD_c_alt_style = 1
 let g:NERDAltDelims_c = 1
 let g:NERDSpaceDelims = 1 
 let g:NERDCompactSecyComs = 1 
-let mapleader = ","
 
 filetype on
 
@@ -338,7 +339,7 @@ map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
 
 " s{char}{char} to move to {char}{char}
-nmap x <Plug>(easymotion-overwin-f2)
+nmap t <Plug>(easymotion-overwin-f2)
 
 " Move to line
 map <Leader>L <Plug>(easymotion-bd-jk)
@@ -347,3 +348,11 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+"" vimtex
+let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_view_method = 'zathura'
+" Use okular for PDF viewer.
+" let g:vimtex_view_general_viewer = 'okular'
+" let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+" let g:vimtex_view_general_options_latexmk = '--unique'
