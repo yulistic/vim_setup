@@ -70,13 +70,13 @@ set cscoperelative
 " Cscope 프로젝트 root directory에 있는 cscope.out을 자동으로 불러오기위한
 " script.
 function! LoadCscope()
-	let db = findfile("cscope.out", ".;")
-	if (!empty(db))
-		let path = strpart(db, 0, match(db, "/cscope.out$"))
-		set nocscopeverbose " suppress 'duplicate connection' error
-		exe "cs add " . db . " " . path
-		set cscopeverbose
-	endif
+        let db = findfile("cscope.out", ".;")
+        if (!empty(db))
+                let path = strpart(db, 0, match(db, "/cscope.out$"))
+                set nocscopeverbose " suppress 'duplicate connection' error
+                exe "cs add " . db . " " . path
+                set cscopeverbose
+        endif
 endfunction
 au BufEnter /* call LoadCscope()
 
@@ -356,3 +356,21 @@ let g:vimtex_view_method = 'zathura'
 " let g:vimtex_view_general_viewer = 'okular'
 " let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 " let g:vimtex_view_general_options_latexmk = '--unique'
+
+" vim-gutentags configuration.
+set statusline+=%{gutentags#statusline()}
+
+" cscope_dynamic configuration.
+nmap <F12> <Plug>CscopeDBInit
+
+" Ggrep
+:command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
+map <Leader>g :Ggr <cword><CR>
+nmap <Leader>g :Ggr <cword><CR>
+"" Map quickfix list navigation.
+" map <C-n> :cn<CR>
+" map <C-p> :cp<CR>
+map ]q :cn<CR>
+map [q :cp<CR>
+map ]Q :clast<CR>
+map [Q :cfirst<CR>
