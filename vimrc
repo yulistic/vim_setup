@@ -47,6 +47,8 @@ nnoremap <F10> :b <C-Z>
 
 " Key re-mapping
 inoremap <c-[> <ESC>
+let mapleader = ","
+let maplocalleader = "\\"
 
 syntax on        " 문법 하이라이트 킴"
 
@@ -84,7 +86,6 @@ let NERD_c_alt_style = 1
 let g:NERDAltDelims_c = 1
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSecyComs = 1
-let mapleader = ","
 
 filetype on
 
@@ -338,7 +339,7 @@ map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
 
 " s{char}{char} to move to {char}{char}
-nmap x <Plug>(easymotion-overwin-f2)
+nmap t <Plug>(easymotion-overwin-f2)
 
 " Move to line
 map <Leader>L <Plug>(easymotion-bd-jk)
@@ -356,8 +357,28 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
+"" vimtex
+let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_view_method = 'zathura'
+" Use okular for PDF viewer.
+" let g:vimtex_view_general_viewer = 'okular'
+" let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+" let g:vimtex_view_general_options_latexmk = '--unique'
+
 " vim-gutentags configuration.
 set statusline+=%{gutentags#statusline()}
 
 " cscope_dynamic configuration.
 nmap <F12> <Plug>CscopeDBInit
+
+" Ggrep
+:command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
+map <Leader>g :Ggr <cword><CR>
+nmap <Leader>g :Ggr <cword><CR>
+"" Map quickfix list navigation.
+" map <C-n> :cn<CR>
+" map <C-p> :cp<CR>
+map ]q :cn<CR>
+map [q :cp<CR>
+map ]Q :clast<CR>
+map [Q :cfirst<CR>
