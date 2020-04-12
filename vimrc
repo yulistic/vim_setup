@@ -382,3 +382,11 @@ map ]q :cn<CR>
 map [q :cp<CR>
 map ]Q :clast<CR>
 map [Q :cfirst<CR>
+
+" display column limit
+if exists('+colorcolumn')
+    set colorcolumn=80
+else
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
+endif
+highlight ColorColumn ctermbg=235 guibg=#2c2d27
