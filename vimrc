@@ -1,3 +1,20 @@
+"Plug automatic installation.
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Begin Plug.
+call plug#begin('~/.vim/plugged')
+
+"fzf-vim
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" End Plug.
+call plug#end()
+
 "Pathogen.
 "call pathogen#runtime_append_all_bundles()
 "call pathogen#helptags()
