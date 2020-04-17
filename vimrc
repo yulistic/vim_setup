@@ -389,7 +389,7 @@ set statusline+=%{gutentags#statusline()}
 nmap <F12> <Plug>CscopeDBInit
 
 " Ggrep
-:command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
+:command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | botright cw | redraw!
 map <Leader>g :Ggr <cword><CR>
 nmap <Leader>g :Ggr <cword><CR>
 "" Map quickfix list navigation.
