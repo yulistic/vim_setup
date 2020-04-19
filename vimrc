@@ -11,6 +11,8 @@ call plug#begin('~/.vim/plugged')
 "fzf-vim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
+
 
 " End Plug.
 call plug#end()
