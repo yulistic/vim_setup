@@ -100,9 +100,14 @@ au BufEnter /* call LoadCscope()
 "NERD Commenter "
 filetype plugin on
 let NERD_c_alt_style = 1
+let NERD_java_alt_style = 1
 let g:NERDAltDelims_c = 1
+let g:NERDAltDelims_java = 1
 let g:NERDSpaceDelims = 1
-let g:NERDCompactSecyComs = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDDefaultNesting = 1
 
 filetype on
 
