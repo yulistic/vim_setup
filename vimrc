@@ -11,6 +11,8 @@ call plug#begin('~/.vim/plugged')
 "fzf-vim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-fugitive'
+
 
 " End Plug.
 call plug#end()
@@ -394,7 +396,7 @@ set statusline+=%{gutentags#statusline()}
 nmap <F12> <Plug>CscopeDBInit
 
 " Ggrep
-:command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
+:command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | botright cw | redraw!
 map <Leader>g :Ggr <cword><CR>
 nmap <Leader>g :Ggr <cword><CR>
 "" Map quickfix list navigation.
