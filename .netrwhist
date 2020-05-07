@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/yulistic/Downloads/mendeleydesktop-1.11-linux-x86_64/share'
-let g:netrw_dirhist_2='/media/yulistic/C624B9D424B9C827/dev/adt/eclipse/readme'
-let g:netrw_dirhist_3='/home/yulistic/dev/temp/sort_test.py'
-let g:netrw_dirhist_4='/home/yulistic/git/Segment/Segment/traces/bodytrack'
-let g:netrw_dirhist_5='/home/yulistic/.vim'
