@@ -414,3 +414,26 @@ else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
 endif
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
+
+" Move lines easily.
+" Linux
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+" MacOS
+" nnoremap ∆ :m .+1<CR>==
+" nnoremap ˚ :m .-2<CR>==
+" inoremap ∆ <Esc>:m .+1<CR>==gi
+" inoremap ˚ <Esc>:m .-2<CR>==gi
+" vnoremap ∆ :m '>+1<CR>gv=gv
+" vnoremap ˚ :m '<-2<CR>gv=gv
+
+" Using Shift + arrow keys
+" nnoremap <S-Up> :m-2<CR>
+" nnoremap <S-Down> :m+<CR>
+" inoremap <S-Up> <Esc>:m-2<CR>
+" inoremap <S-Down> <Esc>:m+<CR>
