@@ -102,9 +102,14 @@ au BufEnter /* call LoadCscope()
 "NERD Commenter "
 filetype plugin on
 let NERD_c_alt_style = 1
+let NERD_java_alt_style = 1
 let g:NERDAltDelims_c = 1
+let g:NERDAltDelims_java = 1
 let g:NERDSpaceDelims = 1
-let g:NERDCompactSecyComs = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDDefaultAlign = 'left'
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDDefaultNesting = 1
 
 filetype on
 
@@ -321,10 +326,10 @@ else
 endif
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
-" Auto backet
+"" Auto backet
 inoremap {<CR>  {<CR>}<Esc>O
 
-"deoplete.nvim
+"" deoplete.nvim
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -333,3 +338,26 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
+
+"" Move lines easily.
+" Linux
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+" MacOS
+" nnoremap ∆ :m .+1<CR>==
+" nnoremap ˚ :m .-2<CR>==
+" inoremap ∆ <Esc>:m .+1<CR>==gi
+" inoremap ˚ <Esc>:m .-2<CR>==gi
+" vnoremap ∆ :m '>+1<CR>gv=gv
+" vnoremap ˚ :m '<-2<CR>gv=gv
+
+" Using Shift + arrow keys
+" nnoremap <S-Up> :m-2<CR>
+" nnoremap <S-Down> :m+<CR>
+" inoremap <S-Up> <Esc>:m-2<CR>
+" inoremap <S-Down> <Esc>:m+<CR>
