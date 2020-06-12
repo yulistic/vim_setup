@@ -27,3 +27,11 @@ To add a new git based plugin, do the following commands at `~/.vim` (root of th
     1. git submodule add [git repository address] bundle/[plugin name] 
     2. git submodule init
     3. git submodule update
+
+## Delete submodule
+```
+git submodule deinit <path_to_submodule>
+git rm <path_to_submodule>
+git commit -m "Removed submodule "
+rm -rf .git/modules/<path_to_submodule>
+```
