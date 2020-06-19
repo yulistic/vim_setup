@@ -25,9 +25,6 @@
 [submodule "bundle/delimitMate"]
 	path = bundle/delimitMate
 	url = git://github.com/Raimondi/delimitMate.git
-[submodule "bundle/SrcExpl"]
-	path = bundle/SrcExpl
-	url = https://github.com/wesleyche/SrcExpl.git
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
