@@ -142,24 +142,6 @@ let g:NERDDefaultNesting = 1
 
 filetype on
 
-"""""" Syntastic setting BEGIN """"""
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-nmap <F6> :SyntasticCheck<CR> :SyntasticToggleMode<CR>
-
-"""""" Syntastic setting END """"""
-
-
 "TagList 관련 설정
 "let Tlist_Use_Right_Window=1
 "nmap <F7> :TlistToggle<CR>
