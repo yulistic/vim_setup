@@ -24,7 +24,7 @@ For example, if `vim_config` is in your home directory,
 ## Add a New Vim Plugin
 To add a new git based plugin, do the following commands at `~/.vim` (root of this git project).
 
-    1. git submodule add [git repository address] bundle/[plugin name] 
+    1. git submodule add [git repository address] bundle/[plugin name]
     2. git submodule init
     3. git submodule update
 
@@ -34,4 +34,13 @@ git submodule deinit <path_to_submodule>
 git rm <path_to_submodule>
 git commit -m "Removed submodule "
 rm -rf .git/modules/<path_to_submodule>
+```
+
+For example, to remove `SrcExpl`
+```
+git submodule   # For listing.
+git submodule deinit bundle/SrcExpl
+git rm bundle/SrcExpl
+git commit -m "Remove SrcExpl"
+rm -rf ../.git/modules/vim/modules/bundle/SrcExpl
 ```

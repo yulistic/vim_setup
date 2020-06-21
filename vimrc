@@ -22,14 +22,30 @@ Plug 'tpope/vim-fugitive'
 "  Plug 'roxma/vim-hug-neovim-rpc'
 "endif
 
-"" vim-gitgutter
-Plug 'airblade/vim-gitgutter'
-
-"" coc.nvim
+Plug 'airblade/vim-gitgutter'  " Show changed lines.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdcommenter'
+Plug 'roman/golden-ratio'
+
+" colorscheme (Themes)
+Plug 'morhetz/gruvbox'
+" Plug 'dracula/vim', { 'as': 'dracula' }
 
 " End Plug.
 call plug#end()
+
+"" colorscheme
+colorscheme gruvbox
+" colorscheme dracula
 
 "Pathogen.
 "call pathogen#runtime_append_all_bundles()
@@ -39,15 +55,15 @@ call pathogen#helptags()
 filetype plugin indent on
 
 "Vim settings.
-set number            " display line number
+" set number            " display line number
 set ai                    " auto indent
 set si                    " smart indent
 set cindent            " c style indent
 set tabstop=8         " tab을 4칸으로
 set shiftwidth=4      " shift를 4칸으로 ( >, >>, <, << 등의 명령어)
 set softtabstop=4
-set expandtab
-" set noexpandtab
+" set expandtab
+set noexpandtab
 set hlsearch         " 검색시 하이라이트(색상 강조)
 set background=dark  " 검정배경을 사용할 때, (이 색상에 맞춰 문법 하이라이트 색상이 달라집니다.)
 set fileencodings=utf-8,euc-kr    " 파일인코딩 형식 지정
@@ -62,7 +78,7 @@ set wmnu           " tab 자동완성시 가능한 목록을 보여줌
 set shell=/bin/bash
 set wrap
 set autochdir	"자동으로 열린파일의 디렉토리로 이동함.
-set foldmethod=indent
+set foldmethod=manual
 set foldnestmax=10
 set nofoldenable
 set foldlevel=2
@@ -152,55 +168,25 @@ nmap <F6> :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 "Tagbar setting
 nmap <F7> :TagbarToggle<CR>
 
-"NERDTree 관련 설정
+"" NERDTree
 let NERDTreeWinPos="left"
 nmap <F9> :NERDTreeToggle<CR>
 
-"SrcExpl 관련 설정
-" // The switch of the Source Explorer
-nmap <F8> :SrcExplToggle<CR>
+" sync open file with NERDTree
+" " Check if NERDTree is open or active
+function! IsNERDTreeOpen()        
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
 
-" // Set the height of Source Explorer window
-let g:SrcExpl_winHeight = 8
+" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
 
-" // Set 100 ms for refreshing the Source Explorer
-let g:SrcExpl_refreshTime = 100
-
-" // Set "Enter" key to jump into the exact definition context
-let g:SrcExpl_jumpKey = "<ENTER>"
-
-" // Set "Space" key for back from the definition context
-let g:SrcExpl_gobackKey = "<SPACE>"
-
-" // In order to avoid conflicts, the Source Explorer should know what plugins
-" // except itself are using buffers. And you need add their buffer names into
-" // below listaccording to the command ":buffers!"
-let g:SrcExpl_pluginList = [
-     \ "__Tagbar__",
-     \ "NERD_tree_1",
-	 \ "[Location List]"
-     \ ]
-
-" // Enable/Disable the local definition searching, and note that this is not
-" // guaranteed to work, the Source Explorer doesn't check the syntax for now.
-" // It only searches for a match with the keyword according to command 'gd'
-let g:SrcExpl_searchLocalDef = 1
-
-" // Do not let the Source Explorer update the tags file when opening
-let g:SrcExpl_isUpdateTags = 0
-
-" // Use 'Exuberant Ctags' with '--sort=foldcase -R .' or '-L cscope.files' to
-" //  create/update a tags file
-let g:SrcExpl_updateTagsCmd = "ctags --sort=foldcase -R ."
-
-" // Set "<F12>" key for updating the tags file artificially
-let g:SrcExpl_updateTagsKey = "<F12>"
-
-" // Set "<F3>" key for displaying the previous definition in the jump list
-let g:SrcExpl_prevDefKey = "<F3>"
-
-" // Set "<F4>" key for displaying the next definition in the jump list
-let g:SrcExpl_nextDefKey = "<F4>"
 
 " armasm 플러그인 관련
 "let asmsyntax='armasm'
@@ -271,24 +257,23 @@ endfunction
 
 " " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " " `s{char}{label}`
-" nmap s <Plug>(easymotion-overwin-f)
+" nmap t <Plug>(easymotion-overwin-f)
 " " or
 " " `s{char}{char}{label}`
 " " Need one more keystroke, but on average, it may be more comfortable.
-" nmap s <Plug>(easymotion-overwin-f2)
+nmap t <Plug>(easymotion-overwin-f2)
 
 " " Turn on case insensitive feature
 " let g:EasyMotion_smartcase = 1
 
-" " JK motions: Line motions
-" map <Leader>j <Plug>(easymotion-j)
-" map <Leader>k <Plug>(easymotion-k)
+"" hjkl motions: Line motions
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
 " <Leader>f{char} to move to {char}
 map  <Leader>f <Plug>(easymotion-bd-f)
 nmap <Leader>f <Plug>(easymotion-overwin-f)
-
-" s{char}{char} to move to {char}{char}
-nmap t <Plug>(easymotion-overwin-f2)
 
 " Move to line
 map <Leader>L <Plug>(easymotion-bd-jk)
@@ -298,7 +283,7 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
-" Highlights whitespace at the end of a line
+"" Highlights whitespace at the end of a line
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
@@ -307,8 +292,8 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 "" vimtex
-let g:vimtex_view_general_viewer = 'zathura'
-let g:vimtex_view_method = 'zathura'
+" let g:vimtex_view_general_viewer = 'zathura'
+" let g:vimtex_view_method = 'zathura'
 " Use okular for PDF viewer.
 " let g:vimtex_view_general_viewer = 'okular'
 " let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
@@ -320,7 +305,7 @@ set statusline+=%{gutentags#statusline()}
 " cscope_dynamic configuration.
 nmap <F12> <Plug>CscopeDBInit
 
-" Ggrep
+"" Ggrep
 :command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | botright cw | redraw!
 map <Leader>g :Ggr <cword><CR>
 nmap <Leader>g :Ggr <cword><CR>
@@ -332,7 +317,7 @@ map [q :cp<CR>
 map ]Q :clast<CR>
 map [Q :cfirst<CR>
 
-" display column limit
+"" display column limit
 if exists('+colorcolumn')
     set colorcolumn=80
 else
@@ -340,7 +325,7 @@ else
 endif
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
-"" Auto backet
+"" Auto bracket
 inoremap {<CR>  {<CR>}<Esc>O
 
 "" deoplete.nvim
@@ -369,8 +354,33 @@ nnoremap <S-Down> :m+<CR>
 inoremap <S-Up> <Esc>:m-2<CR>
 inoremap <S-Down> <Esc>:m+<CR>
 
-"" gitgutter
+"" vim-gitgutter
 set updatetime=100
+let g:gitgutter_preview_win_floating = 1
+
+"" Indent Guides
+" let g:indent_guides_enable_on_vim_startup = 1
+
+"" vim-airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#branch#enabled = 0
+let g:airline_powerline_fonts = 1
+
+"" Hybrid line numbers.
+" turn hybrid line numbers on
+set number relativenumber
+"set nu rnu
+" turn hybrid line numbers off
+"set nonumber norelativenumber
+"set nonu nornu
+" toggle hybrid line numbers
+"set number! relativenumber!
+"set nu! rnu!
+
+"" vim-devicons
+set encoding=UTF-8
 
 "" coc.nvim """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TextEdit might fail if hidden is not set.
@@ -522,4 +532,15 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" plug-ins
+let g:coc_global_extensions = [
+    \ 'coc-json',
+    \ 'coc-snippets',
+    \ 'coc-pairs',
+    \ 'coc-tsserver',
+    \ 'coc-json',
+    \ 'coc-python',
+    \ 'coc-clangd',
+    \ ]
 "" coc.nvim END """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
