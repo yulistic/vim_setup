@@ -34,7 +34,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
-Plug 'roman/golden-ratio'
 
 " colorscheme (Themes)
 Plug 'morhetz/gruvbox'
@@ -298,9 +297,6 @@ autocmd BufWinLeave * call clearmatches()
 " let g:vimtex_view_general_viewer = 'okular'
 " let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 " let g:vimtex_view_general_options_latexmk = '--unique'
-
-" vim-gutentags configuration.
-set statusline+=%{gutentags#statusline()}
 
 " cscope_dynamic configuration.
 nmap <F12> <Plug>CscopeDBInit

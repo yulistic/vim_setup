@@ -28,9 +28,6 @@
 [submodule "bundle/vimtex"]
 	path = bundle/vimtex
 	url = https://github.com/lervag/vimtex.git
-[submodule "bundle/vim-gutentags"]
-	path = bundle/vim-gutentags
-	url = https://github.com/ludovicchabant/vim-gutentags.git
 [submodule "bundle/cscope_dynamic"]
 	path = bundle/cscope_dynamic
 	url = https://github.com/erig0/cscope_dynamic.git
