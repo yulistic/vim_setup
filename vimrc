@@ -34,6 +34,10 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
+Plug 'majutsushi/tagbar'
+Plug 'easymotion/vim-easymotion'
+"Plug 'raimondi/delimitmate'
+"Plug 'lervag/vimtex'
 
 " colorscheme (Themes)
 Plug 'morhetz/gruvbox'
@@ -47,11 +51,9 @@ colorscheme gruvbox
 " colorscheme dracula
 
 "Pathogen.
-"call pathogen#runtime_append_all_bundles()
-"call pathogen#helptags()
-execute pathogen#infect()
-call pathogen#helptags()
-filetype plugin indent on
+" execute pathogen#infect()
+" call pathogen#helptags()
+" filetype plugin indent on
 
 "Vim settings.
 " set number            " display line number
@@ -85,8 +87,8 @@ set foldlevel=2
 " au BufWinLeave * mkview             " Save fold state when file closed.
 " au BufWinEnter * silent loadview    " Load fold state when file opened.
 
-set laststatus=2    "statusline 항시 출력
-set statusline+=%F  "file의 full path를 statusline에 출력
+" set laststatus=2    "statusline 항시 출력
+" set statusline+=%F  "file의 full path를 statusline에 출력
 
 " buffers
 set wildchar=<Tab> wildmenu wildmode=full
@@ -109,22 +111,22 @@ syntax on        " 문법 하이라이트 킴"
 "endif
 "colorscheme solarized
 
-" Ctags
+"" ctags
 "set tags=./tags,tags;$HOME
 set tags=./tags,tags;
 
-" Cscope
+"" cscope
 set cscoperelative
 " Cscope 프로젝트 root directory에 있는 cscope.out을 자동으로 불러오기위한
 " script.
 function! LoadCscope()
-        let db = findfile("cscope.out", ".;")
-        if (!empty(db))
-                let path = strpart(db, 0, match(db, "/cscope.out$"))
-                set nocscopeverbose " suppress 'duplicate connection' error
-                exe "cs add " . db . " " . path
-                set cscopeverbose
-        endif
+       let db = findfile("cscope.out", ".;")
+       if (!empty(db))
+	       let path = strpart(db, 0, match(db, "/cscope.out$"))
+	       set nocscopeverbose " suppress 'duplicate connection' error
+	       exe "cs add " . db . " " . path
+	       set cscopeverbose
+       endif
 endfunction
 au BufEnter /* call LoadCscope()
 
@@ -142,10 +144,6 @@ let g:NERDDefaultNesting = 1
 
 filetype on
 
-"TagList 관련 설정
-"let Tlist_Use_Right_Window=1
-"nmap <F7> :TlistToggle<CR>
-
 "Tagbar setting
 nmap <F7> :TagbarToggle<CR>
 
@@ -155,7 +153,7 @@ nmap <F9> :NERDTreeToggle<CR>
 
 " sync open file with NERDTree
 " " Check if NERDTree is open or active
-function! IsNERDTreeOpen()        
+function! IsNERDTreeOpen()
   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
 endfunction
 
@@ -280,9 +278,6 @@ autocmd BufWinLeave * call clearmatches()
 " let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
 " let g:vimtex_view_general_options_latexmk = '--unique'
 
-" cscope_dynamic configuration.
-nmap <F12> <Plug>CscopeDBInit
-
 "" Ggrep
 :command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | botright cw | redraw!
 map <Leader>g :Ggr <cword><CR>
@@ -360,6 +355,21 @@ set number relativenumber
 "" vim-devicons
 set encoding=UTF-8
 
+"" fzf
+map <Leader>o :GFiles <CR>
+nmap <Leader>o :GFiles <CR>
+map <Leader>t :Tags <CR>
+nmap <Leader>t :Tags <CR>
+
+"" vim-tmux-navigator
+"" Remapping is required because it conflicts with cscope mapping (ctrl+\).
+let g:tmux_navigator_no_mappings = 1
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+" nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
+
 "" coc.nvim """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TextEdit might fail if hidden is not set.
 set hidden
@@ -377,6 +387,7 @@ set updatetime=300
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
+" set shortmess=aFc
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.

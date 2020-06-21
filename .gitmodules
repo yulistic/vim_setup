@@ -1,30 +1,9 @@
-[submodule "bundle/tagbar"]
-	path = bundle/tagbar
-	url = https://github.com/majutsushi/tagbar.git
 [submodule "vim-fugitive"]
 	path = vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "bundle/solarized"]
-	path = bundle/solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "cscope_maps"]
 	path = cscope_maps
-	url = https://github.com/chazy/cscope_maps.git
-[submodule "bundle/cscope_maps"]
-	path = bundle/cscope_maps
 	url = https://github.com/chazy/cscope_maps.git
 [submodule "delimitMate"]
 	path = delimitMate
 	url = git://github.com/Raimondi/delimitMate.git
-[submodule "bundle/delimitMate"]
-	path = bundle/delimitMate
-	url = git://github.com/Raimondi/delimitMate.git
-[submodule "bundle/easymotion"]
-	path = bundle/easymotion
-	url = https://github.com/easymotion/vim-easymotion.git
-[submodule "bundle/vimtex"]
-	path = bundle/vimtex
-	url = https://github.com/lervag/vimtex.git
-[submodule "bundle/cscope_dynamic"]
-	path = bundle/cscope_dynamic
-	url = https://github.com/erig0/cscope_dynamic.git
