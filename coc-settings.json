@@ -1,12 +1,12 @@
 {
-    "languageserver": {
-        "clangd": {
-            "command": "clangd",
-            "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
-            "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
-        }
-
-    },
+//    "languageserver": {
+//        "clangd": {
+//            "command": "clangd",
+//            "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
+//            "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
+//        }
+//
+//    },
 
     "languageserver": {
         "bash": {
@@ -16,5 +16,18 @@
             "ignoredRootPaths": ["~"]
         }
     },
+
+//    "languageserver": {
+//	"ccls": {
+//	    "command": "ccls",
+//	    "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"],
+//	    "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
+//	    "initializationOptions": {
+//		"cache": {
+//		    "directory": "/tmp/ccls"
+//		}
+//	    }
+//	}
+//    }
     "clangd.path": "/home/yulistic/.config/coc/extensions/coc-clangd-data/install/10.0.0/clangd_10.0.0/bin/clangd"
 }

@@ -296,7 +296,7 @@ if exists('+colorcolumn')
 else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%80v.\+', -1)
 endif
-highlight ColorColumn ctermbg=235 guibg=#2c2d27
+" highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 "" Auto bracket
 inoremap {<CR>  {<CR>}<Esc>O
@@ -328,18 +328,30 @@ inoremap <S-Up> <Esc>:m-2<CR>
 inoremap <S-Down> <Esc>:m+<CR>
 
 "" vim-gitgutter
-set updatetime=100
+set updatetime=300
 let g:gitgutter_preview_win_floating = 1
+" au CursorMoved * if gitgutter#hunk#in_hunk(line(".")) | GitGutterPreviewHunk | else | pclose | endif
+" au CursorMoved * if !gitgutter#hunk#in_hunk(line(".")) | pclose | endif
+" let g:gitgutter_use_location_list = 1
 
 "" Indent Guides
 " let g:indent_guides_enable_on_vim_startup = 1
 
 "" vim-airline
+let g:airline_left_sep=' '
+let g:airline_right_sep=' '
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#branch#enabled = 0
+" let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+" let g:airline#extensions#branch#enabled = 0
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_section_b = ''
+let g:airline_section_y = ''
+let g:airline_section_z = ''
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#coc#enabled = 1
 
 "" Hybrid line numbers.
 " turn hybrid line numbers on
