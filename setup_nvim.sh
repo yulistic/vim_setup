@@ -3,11 +3,13 @@
 DIR_PATH="$HOME/.config/nvim"
 
 # For deoplete.nvim
-sudo pip install msgpack
-pip3 install --user --upgrade pynvim
+# sudo pip install msgpack
+# pip3 install --user --upgrade pynvim
 
 # For coc.nvim
-sudo curl -sL install-node.now.sh/lts | bash     # Install nodejs.
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt-get install -y nodejs
+# sudo curl -sL install-node.now.sh/lts | bash     # Install nodejs.
 
 # nvim config file.
 FILE_PATH="$DIR_PATH/init.vim"
