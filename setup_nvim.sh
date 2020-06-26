@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DIR_PATH="$HOME/.config/nvim"
+mkdir -p $DIR_PATH
 
 # For deoplete.nvim
 # sudo pip install msgpack
