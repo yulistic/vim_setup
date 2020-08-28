@@ -24,7 +24,8 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'airblade/vim-gitgutter'  " Show changed lines.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'yggdroot/indentline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -38,17 +39,20 @@ Plug 'majutsushi/tagbar'
 Plug 'easymotion/vim-easymotion'
 "Plug 'raimondi/delimitmate'
 "Plug 'lervag/vimtex'
+Plug 'vim-scripts/DoxygenToolkit.vim'
 
 " colorscheme (Themes)
 Plug 'morhetz/gruvbox'
-" Plug 'dracula/vim', { 'as': 'dracula' }
+" Used for vimdiff.
+Plug 'junegunn/seoul256.vim'
+
+
 
 " End Plug.
 call plug#end()
 
 "" colorscheme
 colorscheme gruvbox
-" colorscheme dracula
 
 "Pathogen.
 " execute pathogen#infect()
@@ -76,7 +80,7 @@ set showmatch    " 매칭되는 괄호를 보여줌
 set nowrap         " 자동 줄바꿈 하지 않음
 set wmnu           " tab 자동완성시 가능한 목록을 보여줌
 "set visualbell		"키를 잘못 누르면 화면을 번쩍이게 함.
-set shell=/bin/bash
+" set shell=/bin/bash
 set wrap
 set autochdir	"자동으로 열린파일의 디렉토리로 이동함.
 set foldmethod=manual
@@ -166,6 +170,14 @@ function! SyncTree()
   endif
 endfunction
 
+" DoxygenToolkit
+let g:DoxygenToolkit_briefTag_pre="@Synopsis  "
+let g:DoxygenToolkit_paramTag_pre="@Param "
+let g:DoxygenToolkit_returnTag="@Returns   "
+" let g:DoxygenToolkit_blockHeader="-------------------------------"
+" let g:DoxygenToolkit_blockFooter="---------------------------------"
+let g:DoxygenToolkit_authorName="Jongyul Kim"
+" let g:DoxygenToolkit_licenseTag="My own license"
 
 " armasm 플러그인 관련
 "let asmsyntax='armasm'
@@ -251,8 +263,8 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>h <Plug>(easymotion-linebackward)
 " <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
+" map  <Leader>f <Plug>(easymotion-bd-f)
+" nmap <Leader>f <Plug>(easymotion-overwin-f)
 
 " Move to line
 map <Leader>L <Plug>(easymotion-bd-jk)
@@ -279,7 +291,10 @@ autocmd BufWinLeave * call clearmatches()
 " let g:vimtex_view_general_options_latexmk = '--unique'
 
 "" Ggrep
-:command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | botright cw | redraw!
+" :command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | aboveleft cw | redraw!
+" :command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | belowright cw | redraw!
+" :command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | botright cw | redraw!
+:command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | topleft cw | redraw!
 map <Leader>g :Ggr <cword><CR>
 nmap <Leader>g :Ggr <cword><CR>
 "" Map quickfix list navigation.
@@ -337,6 +352,12 @@ let g:gitgutter_preview_win_floating = 1
 "" Indent Guides
 " let g:indent_guides_enable_on_vim_startup = 1
 
+"" indentline
+" let g:indentLine_enabled = 1
+
+" vertical line for indent.
+set list lcs=tab:\|\ 
+
 "" vim-airline
 let g:airline_left_sep=' '
 let g:airline_right_sep=' '
@@ -372,6 +393,8 @@ map <Leader>o :GFiles <CR>
 nmap <Leader>o :GFiles <CR>
 map <Leader>t :Tags <CR>
 nmap <Leader>t :Tags <CR>
+map <Leader>b :Buffers <CR>
+nmap <Leader>b :Buffers <CR>
 
 "" vim-tmux-navigator
 "" Remapping is required because it conflicts with cscope mapping (ctrl+\).
@@ -534,6 +557,22 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+" Mappings for coc-snippets
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
 " plug-ins
 let g:coc_global_extensions = [
     \ 'coc-json',
@@ -542,6 +581,7 @@ let g:coc_global_extensions = [
     \ 'coc-tsserver',
     \ 'coc-json',
     \ 'coc-python',
-    \ 'coc-clangd',
+    \ 'coc-sh',
     \ ]
+    " \ 'coc-clangd',
 "" coc.nvim END """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
