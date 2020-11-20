@@ -44,3 +44,10 @@ git rm bundle/SrcExpl
 git commit -m "Remove SrcExpl"
 rm -rf ../.git/modules/vim/modules/bundle/SrcExpl
 ```
+
+# Coc.nvim
+You can check state of coc.nvim installation by
+```
+:CheckHealth
+```
+in vim.

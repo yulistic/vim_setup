@@ -1,7 +1,6 @@
 #!/bin/bash
 ./setup_nvim.sh
 
-git submodule update --init --recursive
 DIR_PATH="$HOME/.vim"
 FILE_PATH="$HOME/.vimrc"
 if [ -L $DIR_PATH ]; then
@@ -17,3 +16,5 @@ elif [ -e $FILE_PATH ]; then
 fi
 ln -s $(pwd)/vimrc $FILE_PATH
 ln -s $(pwd) $DIR_PATH
+
+sudo chown -R yulistic:yulistic $HOME/.config
