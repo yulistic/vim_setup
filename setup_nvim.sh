@@ -8,9 +8,7 @@ mkdir -p $DIR_PATH
 # pip3 install --user --upgrade pynvim
 
 # For coc.nvim
-curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt-get install -y nodejs
-# sudo curl -sL install-node.now.sh/lts | bash     # Install nodejs.
+curl -sL install-node.now.sh/lts | bash
 
 # nvim config file.
 FILE_PATH="$DIR_PATH/init.vim"
