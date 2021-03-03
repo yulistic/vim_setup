@@ -13,6 +13,9 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 
+"coc-fzf
+Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
+
 "" deoplete.nvim
 "if has('nvim')
 "  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -65,8 +68,8 @@ set ai                    " auto indent
 set si                    " smart indent
 set cindent            " c style indent
 set tabstop=8         " tab을 4칸으로
-set shiftwidth=4      " shift를 4칸으로 ( >, >>, <, << 등의 명령어)
-set softtabstop=4
+set shiftwidth=8      " shift를 4칸으로 ( >, >>, <, << 등의 명령어)
+set softtabstop=8
 " set expandtab
 set noexpandtab
 set hlsearch         " 검색시 하이라이트(색상 강조)
