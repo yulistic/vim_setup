@@ -8,7 +8,7 @@ mkdir -p $DIR_PATH
 # pip3 install --user --upgrade pynvim
 
 # For coc.nvim
-curl -sL install-node.now.sh/lts | bash
+curl -sL install-node.now.sh/lts | sudo bash
 
 # nvim config file.
 FILE_PATH="$DIR_PATH/init.vim"
@@ -27,3 +27,9 @@ elif [ -e $FILE_PATH ]; then
     mv $FILE_PATH ${FILE_PATH}.old && echo "${FILE_PATH} exists. It was moved to '${FILE_PATH}.old'. Remove it if not required."
 fi
 ln -s $(pwd)/coc-settings.json $FILE_PATH
+
+# Resolving issues of coc.nvim
+sudo pip install neovim
+sudo pip3 install neovim
+sudo npm install -g neovim
+sudo gem install neovim
