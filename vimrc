@@ -31,7 +31,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'yggdroot/indentline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'jeffkreeftmeijer/vim-numbertoggle'
+" Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -46,16 +46,16 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 
 " colorscheme (Themes)
 Plug 'morhetz/gruvbox'
+Plug 'yous/vim-open-color'
+Plug 'sainnhe/sonokai'
 " Used for vimdiff.
 Plug 'junegunn/seoul256.vim'
-
-
 
 " End Plug.
 call plug#end()
 
 "" colorscheme
-colorscheme gruvbox
+colorscheme sonokai
 
 "Pathogen.
 " execute pathogen#infect()
@@ -378,15 +378,18 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#coc#enabled = 1
 
 "" Hybrid line numbers.
+"" Refer to plugin: 'jeffkreeftmeijer/vim-numbertoggle'
+""
 " turn hybrid line numbers on
-set number relativenumber
+" set number relativenumber
 "set nu rnu
 " turn hybrid line numbers off
 "set nonumber norelativenumber
-"set nonu nornu
+" set nonu nornu
 " toggle hybrid line numbers
 "set number! relativenumber!
 "set nu! rnu!
+set nu
 
 "" vim-devicons
 set encoding=UTF-8
@@ -439,8 +442,13 @@ endif
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
@@ -576,6 +584,9 @@ let g:coc_snippet_prev = '<c-k>'
 " Use <C-j> for both expand and jump (make expand higher priority.)
 imap <C-j> <Plug>(coc-snippets-expand-jump)
 
+" Use <leader>x for convert visual selected code to snippet
+xmap <leader>x  <Plug>(coc-convert-snippet)
+
 " plug-ins
 let g:coc_global_extensions = [
     \ 'coc-json',
@@ -588,3 +599,6 @@ let g:coc_global_extensions = [
     \ ]
     " \ 'coc-clangd',
 "" coc.nvim END """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" suppress error message popped when using vim <= 8.1.1719.
+let g:coc_disable_startup_warning = 1
